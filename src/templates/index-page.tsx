@@ -16,8 +16,8 @@ type Props = {
 };
 
 export const IndexPageTemplate: FC<IndexPageTemplateProps> = ({ content }) => (
-	<div className="container">
-		<HTMLContent content={content} />
+	<div>
+		<HTMLContent className="container" content={content} />
 	</div>
 );
 

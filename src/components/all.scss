@@ -1,5 +1,6 @@
-// $dark-grey: #16191b;
-$dark-grey: #2f4c54;
+$light-brown: #D7D2C5;
+$dark-grey: #000000;
+$dark-orange: #ad662b;
 
 // 1. Set box-sizing globally so it can be inherited more cleanly
 // 2. Prevent adjustments of font size after orientation changes in iOS
@@ -17,39 +18,76 @@ html {
 
 // 1. Remove the margin
 // 2. Set some typography defaults
-// 3. Set correct font ordering, if not PT Sans just use system default
+// 3. Set correct font ordering, if Caslon isn't working use system default fonts
 body {
-	margin: 0; // (1)
-	line-height: 1.444; // (2)
-	font-size: 32px; // (2)
-	color: $dark-grey;
-	// background-color: #f9f7f3;
-	font-family: "Libre Caslon Text", -apple-system, BlinkMacSystemFont,
+    margin: 0; // (1)
+    background-color: $light-brown;
+    color: $dark-grey;
+	line-height: 1.618; // (2)
+	font-size: 21px; // (2)
+	font-family: "adobe-caslon-pro", -apple-system, BlinkMacSystemFont,
 		"Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-		sans-serif; // (2)(3)
+        sans-serif; // (2)(3)
+    
+    // Dark mode styles
+    @media (prefers-color-scheme: dark) {
+        color: $light-brown;
+        background-color: $dark-grey;
+    }
+}
+
+// Let anchors inherit default body color
+a {
+    color: inherit;
 }
 
 // Make sure this works good in IE
 // https://caniuse.com/#feat=html5semantic
 main {
-	display: block;
-	display: flex;
-	padding-left: 5vw;
-	padding-right: 5vw;
+    display: block;
+}
+
+// 1. Use vw for some responsive gutters
+article {
+    padding-left: 5vw; // (1)
+    padding-right: 5vw; // (1)
 }
 
 // Headline styles
-// 1. Font-size is 2.386em * 18px = 42.8px
-h1 {
-	font-family: "Yeseva One", serif;
-	font-size: 2.618em; // (1)
-	line-height: 1.15;
-	margin: 2.75rem 0 1.05rem;
-	color: #ad662b;
+h1, h2, h3, h4, h5, h6 {
+    margin: 2.618rem 0 2.236rem;
+    color: $dark-orange;
+    line-height: 1.168;
+    font-family: "roc-grotesk-wide", sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.015em;
+    
+    // Dark mode styles
+    @media (prefers-color-scheme: dark) {
+        color: $light-brown;
+    }
 }
 
+// H1 is small and located in the top corner
+h1 {
+    font-size: 1em;
+    
+    // There is a link in the site h1
+    > a {
+        text-decoration: none;
+    }
+}
+
+// Font-size is 2.386em * 21px = 50px
+h2 {
+    font-size: 2.382em;
+}
+
+// container styles
+// 1. large padding top and bottom
+// 2. 32.3 * 21 = 678px
 .container {
-	padding-top: 4.236em;
-	max-width: 36em;
-	width: 100%;
+	padding: 3.618em 0 4.236em 0; // (1)
+	max-width: 32.3em; // (2)
+    width: 100%;
 }

@@ -35,7 +35,20 @@ module.exports = {
 				icon: "static/img/favicon-32x32.png" // This path is relative to the root of the site.
 			}
 		},
-		`gatsby-transformer-remark`,
+		{
+            resolve: `gatsby-transformer-remark`,
+            options:  {
+                plugins: [
+                    {
+                        resolve: "gatsby-remark-external-links",
+                        options: {
+                            target: "_blank",
+                            rel: "nofollow"
+                        }
+                    }
+                ]
+            }
+        },
 		{
 			// keep as first gatsby-source-filesystem plugin for gatsby image support
 			resolve: "gatsby-source-filesystem",

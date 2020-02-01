@@ -19,7 +19,9 @@ const TemplateWrapper: React.FC = ({ children }) => (
 			<main>
 				<Helmet>
 					<html lang="en" />
+
 					<title>{data.site.siteMetadata.title}</title>
+
 					<meta
 						name="description"
 						content={data.site.siteMetadata.description}
@@ -50,9 +52,9 @@ const TemplateWrapper: React.FC = ({ children }) => (
 					/>
 					<meta name="theme-color" content="#fff" />
 
-					<meta property="og:type" content="business.business" />
+					<meta property="og:type" content="website" />
 					<meta property="og:title" content={data.site.siteMetadata.title} />
-					<meta property="og:url" content="/" />
+					<meta property="og:url" content="https://www.iamchriswilson.com" />
 					<meta property="og:image" content="/img/og-image.jpg" />
 				</Helmet>
 				<article>{children}</article>

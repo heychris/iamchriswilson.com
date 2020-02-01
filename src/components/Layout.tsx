@@ -57,7 +57,13 @@ const TemplateWrapper: React.FC = ({ children }) => (
 					<meta property="og:url" content="https://www.iamchriswilson.com" />
 					<meta property="og:image" content="/img/og-image.jpg" />
 				</Helmet>
-				<article>{children}</article>
+				<article>
+                    <header>
+                        <h1><a href="/" title="Personal Website of Chris Wilson | Homepage">Chris Wilson</a></h1>
+                    </header>
+
+                    {children}
+                </article>
 			</main>
 		)}
 	/>

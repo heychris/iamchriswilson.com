@@ -26,11 +26,6 @@ const TemplateWrapper: React.FC = ({ children }) => (
 					/>
 
 					<link
-						href="https://fonts.googleapis.com/css?family=Libre+Caslon+Text|Yeseva+One&display=swap"
-						rel="stylesheet"
-					></link>
-
-					<link
 						rel="apple-touch-icon"
 						sizes="180x180"
 						href="/img/apple-touch-icon.png"

@@ -1,7 +1,8 @@
-import React, { FC } from "react";
-import { graphql } from "gatsby";
-import Layout from "../components/Layout";
-import { HTMLContent } from "../components/Content";
+import React, { FC } from 'react';
+import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
+import Layout from '../components/Layout';
+import { HTMLContent } from '../components/Content';
 
 type IndexPageTemplateProps = {
 	content: string;
@@ -21,6 +22,10 @@ export const IndexPageTemplate: FC<IndexPageTemplateProps> = ({ content }) => (
 	</div>
 );
 
+IndexPageTemplate.propTypes = {
+    content: PropTypes.string.isRequired
+};
+
 const IndexPage: FC<Props> = ({ data }) => {
 	const { markdownRemark: post } = data;
 
@@ -30,6 +35,10 @@ const IndexPage: FC<Props> = ({ data }) => {
 		</Layout>
 	);
 };
+
+IndexPage.propTypes = {
+    data: PropTypes.any.isRequired
+}
 
 export default IndexPage;
 

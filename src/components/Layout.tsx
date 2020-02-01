@@ -1,7 +1,8 @@
-import React from "react";
-import Helmet from "react-helmet";
-import { StaticQuery, graphql } from "gatsby";
-import "./all.scss";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
+import { StaticQuery, graphql } from 'gatsby';
+import './all.scss';
 
 const TemplateWrapper: React.FC = ({ children }) => (
 	<StaticQuery
@@ -68,4 +69,9 @@ const TemplateWrapper: React.FC = ({ children }) => (
 		)}
 	/>
 );
+
+TemplateWrapper.propTypes = {
+    children: PropTypes.any.isRequired
+}
+
 export default TemplateWrapper;

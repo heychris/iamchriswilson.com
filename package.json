@@ -20,10 +20,10 @@
     "gatsby-transformer-remark": "^2.1.15",
     "netlify-cms-app": "^2.11.11",
     "node-sass": "^4.11.0",
-    "prop-types": "^15.6.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.4.1",
-    "react-helmet": "^5.2.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^5.2.1",
     "uuid": "^3.2.1"
   },
   "keywords": [
@@ -43,11 +43,17 @@
     "build": "run-p build:**",
     "develop": "npm run clean && gatsby develop",
     "serve": "gatsby serve",
-    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\""
+    "lint": "npm eslint src/ --ext .js,.tsx"
   },
   "devDependencies": {
     "@types/netlify-identity-widget": "^1.4.1",
+    "@types/prop-types": "^15.7.3",
+    "@types/react": "^16.9.19",
     "@types/react-helmet": "^5.0.8",
+    "@typescript-eslint/eslint-plugin": "^2.18.0",
+    "@typescript-eslint/parser": "^2.18.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.18.0",
     "http-proxy-middleware": "^0.20.0",
     "netlify-lambda": "^1.4.2",
     "npm-run-all": "^4.1.5",

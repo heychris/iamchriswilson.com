@@ -70,7 +70,20 @@ module.exports = {
 				path: `${__dirname}/src/img`,
 				name: "images"
 			}
-		},
+        },
+        {
+            resolve: `gatsby-plugin-google-analytics`,
+            options: {
+                // The property ID; the tracking code won't be generated without it
+                trackingId: "UA-37522334-1",
+                // Defines where to place the tracking script - `true` in the head and `false` in the body
+                head: true,
+                // Avoids sending pageview hits from custom paths
+                exclude: ["/admin/**"],
+                // Delays sending pageview hits on route update (in milliseconds)
+                pageTransitionDelay: 0
+            },
+        },
 		{
 			resolve: "gatsby-plugin-netlify-cms",
 			options: {

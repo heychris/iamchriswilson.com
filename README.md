@@ -2,8 +2,6 @@
 
 My personal website built using Gatsby and Netlify.
 
----
-
 ## TypeScript + React (.tsx)
 
 All React compontents are built using TypeScript (.tsx). [Netlify-lambda](https://github.com/netlify/netlify-lambda) is used as an extra build step to make this TypeScript addition work.

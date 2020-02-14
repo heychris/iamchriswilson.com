@@ -26,7 +26,7 @@ Fork this repo if you are making any updates. Otherwise you can delete my remote
    ```
    yarn develop
    ```
-   Navigate to the <ip>:<port> specified in the command output. Assuming port 8000 is available it will default to `localhost:8000`.
+   Navigate to the ```<ip>:<port>``` specified in the command output. Assuming port 8000 is available it will default to `localhost:8000`.
 
 That's it. If something looks wrong file and issue or submit a pull request.
 

@@ -4,8 +4,8 @@
 */
 
 :root {
-  --light-brown: #D7D2C5;
-  --black: #000000;
+  --color-brown: #D7D2C5;
+  --color-black: #000000;
   --base-text-size: 21px;
   --font-body: "source-serif-pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   --font-headline: "roc-grotesk-wide", sans-serif;
@@ -29,30 +29,30 @@ html {
 }
 
 body {
-    margin: 0;
-    background-color: var(--color-brown);
-    color: var(--color-black);
-    line-height: 1.618;
-    font-size: var(--base-text-size);
-    font-family: var(--font-body);
-    
-    @media (prefers-color-scheme: dark) {
-        color: var(--color-brown);
-        background-color: var(--color-black);
-    }
+  margin: 0;
+  background-color: var(--color-brown);
+  color: var(--color-black);
+  line-height: 1.618;
+  font-size: var(--base-text-size);
+  font-family: var(--font-body);
+  
+  @media (prefers-color-scheme: dark) {
+    color: var(--color-brown);
+    background-color: var(--color-black);
+  }
 }
 
 a {
-    color: inherit;
+  color: inherit;
 }
 
 main {
-    display: block;
+  display: block;
 }
 
-article {
-    padding-left: 5vw; 
-    padding-right: 5vw;
+article, nav {
+  padding-left: 5vw; 
+  padding-right: 5vw;
 }
 
 /* 
@@ -61,28 +61,28 @@ article {
 */
 
 h1, h2, h3, h4, h5, h6 {
-    margin: 2.618rem 0 2.236rem;
-    color: var(--color-black);
-    line-height: 1.168;
-    font-family: var(--font-headline);
-    font-weight: 500;
-    letter-spacing: 0.015em;
-    
-    @media (prefers-color-scheme: dark) {
-        color: var(--color-brown);
-    }
+  margin: 2.618rem 0 2.236rem;
+  color: var(--color-black);
+  line-height: 1.168;
+  font-family: var(--font-headline);
+  font-weight: 500;
+  letter-spacing: 0.015em;
+  
+  @media (prefers-color-scheme: dark) {
+    color: var(--color-brown);
+  }
 }
 
 h1 {
-    font-size: 1em;
-    
-    > a {
-        text-decoration: none;
-    }
+  font-size: 1em;
+  
+  > a {
+    text-decoration: none;
+  }
 }
 
 h2 {
-    font-size: 2.382em;
+  font-size: 2.382em;
 }
 
 
@@ -104,4 +104,19 @@ h2 {
 	padding: 3.618em 0 4.236em 0;
 	max-width: 32.3em;
   width: 100%;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.github {
+  height: 24px;
+  object-fit: contain;
+
+  @media (prefers-color-scheme: dark) {
+    filter: invert(1);
+  }
 }

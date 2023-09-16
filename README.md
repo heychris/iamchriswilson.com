@@ -1,35 +1,38 @@
-# Repository for [iamchriswilson.com](https://iamchriswilson.com)
+# create-svelte
 
-My personal website built using Gatsby and Netlify.
+Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
-## TypeScript + React (.tsx)
+## Creating a project
 
-All React compontents are built using TypeScript (.tsx). [Netlify-lambda](https://github.com/netlify/netlify-lambda) is used as an extra build step to make this TypeScript addition work.
+If you're seeing this, you've probably already done this step. Congrats!
 
-## Updating Content
+```bash
+# create a new project in the current directory
+npm create svelte@latest
 
-Homepage content is located in `src/pages/index.md` and is Markdown formatted. Additionally, Netlify CMS is setup with the website so invited users can edit the same content by visiting `/admin`. Netlify will sync content changes with Github.
+# create a new project in my-app
+npm create svelte@latest my-app
+```
 
-## Installation and Setup
+## Developing
 
-Fork this repo if you are making any updates. Otherwise you can delete my remote origin and [add your own](https://help.github.com/en/github/using-git/changing-a-remotes-url).
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-**Note: I use [yarn](https://github.com/yarnpkg/yarn) in my build steps, but you can swap it out for npm.**
+```bash
+npm run dev
 
-1. Download the repository and install the dependencies.
-   ```
-   git clone git@github.com:heychris/iamchriswilson.com.git
-   cd iamchriswilson.com
-   yarn install
-   ```
-2. And start developing!
-   ```
-   yarn develop
-   ```
-   Navigate to the ```<ip>:<port>``` specified in the command output. Assuming port 8000 is available it will default to `localhost:8000`.
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
 
-That's it. If something looks wrong file and issue or submit a pull request.
+## Building
 
-## License
+To create a production version of your app:
 
-[MIT](https://github.com/heychris/iamchriswilson.com/blob/master/LICENSE)
+```bash
+npm run build
+```
+
+You can preview the production build with `npm run preview`.
+
+> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.

@@ -216,6 +216,6 @@
 		top: 0;
 		z-index: -1;
 		pointer-events: none;
-		opacity: 0.2;
+		opacity: 0.5;
 	}
 </style>

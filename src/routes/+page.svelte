@@ -55,6 +55,10 @@
 	</div>
 </main>
 
+<svelte:head>
+	<title>Chris Wilson | Software Engineer</title>
+</svelte:head>
+
 <style>
 	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@600&family=Noto+Serif&display=swap');
 
@@ -77,6 +81,7 @@
 		font-family: 'Noto Serif', serif;
 		line-height: 1.5;
 		text-rendering: geometricPrecision;
+		font-display: optional;
 	}
 
 	a {

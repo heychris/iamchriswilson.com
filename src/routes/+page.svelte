@@ -60,7 +60,7 @@
 </svelte:head>
 
 <style>
-	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@600&family=Noto+Serif&display=optional');
+	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@600&family=Noto+Serif&display=swap');
 
 	:root {
 		--white: #eeeefa;

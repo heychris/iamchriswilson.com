@@ -20,7 +20,7 @@
 			</p>
 			<p>
 				I enjoy scotch served neat, (almost) any kind of music, and quiet evenings with family.
-				(When I'm lucky I have all three.)
+				When I'm lucky I have all three.
 			</p>
 		</section>
 
@@ -60,7 +60,7 @@
 </svelte:head>
 
 <style>
-	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@600&family=Noto+Serif&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@600&family=Noto+Serif&display=optional');
 
 	:root {
 		--white: #eeeefa;
@@ -81,7 +81,6 @@
 		font-family: 'Noto Serif', serif;
 		line-height: 1.5;
 		text-rendering: geometricPrecision;
-		font-display: optional;
 	}
 
 	a {

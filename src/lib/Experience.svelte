@@ -9,6 +9,7 @@
 <div class="experience">
 	<div>
 		<h3 class="title">{title} at {company}</h3>
+
 		<div class="details">
 			<p class="location">{location}</p>
 			<p class="dates">({dates})</p>
@@ -20,7 +21,7 @@
 
 <style>
 	.experience {
-		padding-top: 0.5em;
+		padding-top: 0.7em;
 	}
 
 	.details {
@@ -30,18 +31,23 @@
 		padding-bottom: 0.3em;
 	}
 
-	.title,
+	.title {
+		font-size: 0.75em;
+		font-family: 'Noto Sans Display';
+	}
+
 	.summary {
 		font-size: 0.9em;
 	}
 
 	.title {
-		margin-bottom: 0.2em;
+		margin-bottom: 0.1em;
 	}
 
 	.location,
 	.dates {
-		color: #aaa;
+		color: var(--white);
+		opacity: 0.6;
 		font-family: 'Noto Sans Display';
 		font-size: 0.75em;
 		margin: 0;

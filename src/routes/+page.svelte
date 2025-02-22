@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Experience from '$lib/experience.svelte';
-	import Shader from '$lib/shader.svelte';
+	import Experience from '$lib/Experience.svelte';
+	import Shader from '$lib/Shader.svelte';
 </script>
 
 <Shader />
@@ -19,8 +19,8 @@
 				software. I value clear communication, documented systems, and simple solutions.
 			</p>
 			<p>
-				I enjoy scotch served neat, (almost) any kind of music, and quiet evenings with family.
-				When I'm lucky I have all three.
+				I espresso after dinner, (almost) any kind of music, and quiet evenings with family. When
+				I'm lucky I have all three.
 			</p>
 		</section>
 
@@ -35,6 +35,14 @@
 
 		<section>
 			<h2>Experience</h2>
+
+			<Experience
+				company="Fountain"
+				title="Senior Software Engineer"
+				dates="Oct 2023 – Today"
+				location="Remote"
+				summary="Building scalable software on deadline. Full-stack work using modern technologies (mostly JS)."
+			/>
 
 			<Experience
 				company="InVision"

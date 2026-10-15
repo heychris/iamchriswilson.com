@@ -1,9 +1,32 @@
 #version 100
 
+// mediump time loses per-frame precision after ~30 minutes on some GPUs
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
 
-uniform float time;
 uniform vec2 resolution;
+uniform float time;
+uniform float zoom;
+
+// Pattern
+uniform float background;
+uniform float strength;
+uniform float contrast;
+uniform float softness;
+
+// Contour lines
+uniform float lineCount;
+uniform float lineStrength;
+
+// Pulse
+uniform float pulse;
+uniform float pulseTime;
+uniform float pulseFrequency;
+
+const float TAU = 6.28318530718;
 
 // Utils
 const mat2 m = mat2(0.80,  0.60, -0.60,  0.80);
@@ -44,7 +67,7 @@ vec2 fbm6_2(vec2 p) {
 
 // - - - - - - - - - - - - - - - - - - - -
 
-float func(vec2 q, out vec4 ron) {
+float func(vec2 q, out vec4 ron, out float unfolded) {
   q += 0.05 * sin(vec2(0.27,0.23)*time + length(q)*vec2(4.1,4.3));
 
   vec2 o = fbm4_2(0.9 * q);
@@ -53,42 +76,43 @@ float func(vec2 q, out vec4 ron) {
   vec2 n = fbm6_2(3.0 * o);
   ron = vec4(o, n);
   float f = 0.45 + 0.5*fbm4(1.8*q + 6.0*n);
+  unfolded = f;
 
+  // Folded copy of the field; its sharper creases give the contour lines their shape
   return mix(f, f*f*f*3.5, f*abs(n.x));
 }
 
 void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
-  vec2 p = (2.0*fragCoord - resolution.xy) / resolution.y;
-  float e = 2.0 / resolution.y;
+  vec2 p = zoom * (2.0*fragCoord - resolution.xy) / resolution.y;
+  float e = zoom * 2.0 / resolution.y;
 
   vec4 on = vec4(1.0);
-  float f = func(p, on);
+  float density;
+  float f = func(p, on, density);
 
-  vec3 col = vec3(1.0);
-  col = mix(vec3(1.5,1.5,1.5), vec3(1.5,1.5,1.5), f);
-  col = mix(col, vec3(1.5,1.5,1.5), dot(on.zw, on.zw));
-  col = mix(col, vec3(1.5,1.5,1.5), 0.2 + 0.5*on.y*on.y);
-  col = mix(col, vec3(1.5,1.5,1.5), 0.5*smoothstep(1.2,1.3,abs(on.z)+abs(on.w)));
-  col = clamp(col*f*1.0, 0.0, 1.0);
-
-#if 0
-  // gpu derivatives - bad quality, but fast
-  vec3 nor = normalize(vec3(dFdx(f)*resolution.x, 6.0, dFdy(f)*resolution.y));
-#else    
-  // manual derivatives - better quality, but slower
+  // Neighbouring samples, one pixel over, to keep contour lines a constant width
   vec4 kk;
-  vec3 nor = normalize(vec3(func(p+vec2(e, 0.0), kk) - f, e,
-        func(p+vec2(0.0, e), kk) - f));
-#endif
+  float kd;
+  vec2 df = vec2(func(p+vec2(e, 0.0), kk, kd), func(p+vec2(0.0, e), kk, kd)) - f;
 
-  vec3 lig = normalize(vec3(0.9, 0.2, -0.4));
-  float dif = clamp(1.0 + dot(nor, lig), 0.0, 1.0);
-  vec3 lin = vec3(0.55,0.7,0.7)*(nor.y*0.2+0.5) + vec3(0.0,0.2,0.2)*dif;
-  col *= 1.8*lin;
-  col = 1.0 - col;
-  col = 0.4*col*col;
+  // Smoke: shade by the unfolded density of the field, with the second warp layer
+  // thinning it out into wisps
+  float wisps = density * (0.6 + 0.8*on.w);
+  float smokeShade = smoothstep(0.5 - softness, 0.5 + softness, wisps);
 
-  fragColor = vec4(col, 1.0);
+  float shade = clamp((smokeShade - 0.5)*contrast + 0.5, 0.0, 1.0);
+
+  // Contour lines of constant width in pixels, regardless of how steep the pattern is
+  float bands = f * lineCount;
+  float distToLine = abs(fract(bands + 0.5) - 0.5) / max(lineCount * length(df), 1e-4);
+  float line = 1.0 - smoothstep(0.0, 1.0, distToLine);
+
+  // Pulse: a wave sweeping across the screen that brightens lines as it passes
+  float wave = 0.5 + 0.5*sin(pulseFrequency*(p.x + p.y) + TAU*f - pulseTime);
+  line *= mix(1.0, wave, pulse);
+
+  float value = background - strength*shade - lineStrength*line;
+  fragColor = vec4(vec3(clamp(value, 0.0, 1.0)), 1.0);
 }
 
 void main() {

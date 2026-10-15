@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&display=swap');
+@import 'tailwindcss';
+
+@theme {
+	--font-sans: 'Noto Sans', sans-serif;
+}
+
+:root {
+	--background: #fff;
+	--text: #222;
+	--fontSize: 18px;
+	--fontSizeHeadings: 18px;
+}
+
+@layer base {
+	body {
+		background-color: var(--background);
+		color: var(--text);
+		font-size: var(--fontSize);
+		line-height: 1.5;
+		text-rendering: geometricPrecision;
+	}
+
+	/* Preflight removes these; the prose on this site relies on them */
+	p {
+		margin-block: 1em;
+	}
+
+	a {
+		text-decoration: underline;
+	}
+}

@@ -8,7 +8,7 @@
 	<div class="container">
 		<header>
 			<h1>Chris Wilson</h1>
-			<p>Software engineer <br />Minnesota</p>
+			<p>Software engineer</p>
 		</header>
 
 		<section>
@@ -17,7 +17,7 @@
 				I enjoy building software people want to use. I believe good engineering means caring about
 				the details, having no ego, and making things go really fast.
 			</p>
-			<p>I work at Fountain. Previously I worked at InVision and MVP Marketing + Design.</p>
+			<p>I work at Fountain. Before that I was at InVision and MVP Marketing + Design.</p>
 		</section>
 
 		<section>
@@ -40,6 +40,7 @@
 		display: flex;
 		align-items: center;
 		flex-direction: column;
+		text-wrap: pretty;
 	}
 
 	.container {
@@ -53,8 +54,7 @@
 	}
 
 	header > p {
-		margin-top: 0.3em;
-		font-size: 16px;
+		margin-top: 0em;
 	}
 
 	section + section {
@@ -62,7 +62,7 @@
 	}
 
 	h2 + p {
-		margin-top: 0.5em;
+		margin-top: 0.3em;
 	}
 
 	h1,
